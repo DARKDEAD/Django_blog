@@ -1,3 +1,8 @@
+#После изменения модели сделать:
+# makemigrations blog
+# sqlmigrate blog 0001
+# migrate
+
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -26,3 +31,5 @@ class Meta:
 
 def __str__(self):
     return self.title
+
+
