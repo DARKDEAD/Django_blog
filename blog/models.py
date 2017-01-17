@@ -26,10 +26,14 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now_add=True)
 
+    object = models.Manager()
+    published = PublishedManager()
 class Meta:
     ordering = ('-publish',)
 
 def __str__(self):
     return self.title
 
-
+class PublishedManager(models.Model):
+    def get_queryset(self):
+        return super(PublishedManager,self).get_queryset().filter(status='published')
